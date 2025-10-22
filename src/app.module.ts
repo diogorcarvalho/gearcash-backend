@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './presentation/controllers/app.controller';
-import { AppUseCase } from './application/use-cases/app.use-case';
+import { APP_GUARD } from '@nestjs/core';
 import { databaseConfig } from './infrastructure/config/database.config';
+import { AuthModule } from './modules/auth/auth.module';
+import { JwtAuthGuard } from './shared/guards/jwt-auth.guard';
 
 @Module({
   imports: [
@@ -17,8 +18,14 @@ import { databaseConfig } from './infrastructure/config/database.config';
       useFactory: databaseConfig,
       inject: [ConfigService],
     }),
+    AuthModule,
   ],
-  controllers: [AppController],
-  providers: [AppUseCase],
+  controllers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
+  ],
 })
 export class AppModule {}
