@@ -1,0 +1,56 @@
+# Dependencies
+node_modules
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist
+build
+.next
+.nuxt
+
+# Environment variables
+.env*
+!.env.example
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Coverage
+coverage
+*.lcov
+.nyc_output
+
+# Cache
+.cache
+.parcel-cache
+.eslintcache
+
+# Temporary
+tmp
+temp
+.tmp
+.temp
+
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+*.md
+!docker/README.md
